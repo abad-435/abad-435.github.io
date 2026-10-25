@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ozbeksiber - Portfolyo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Orbitron & Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif'],
+                    },
+                    colors: {
+                        cyber: {
+                            dark: '#030712',
+                            card: '#0B1528',
+                            blue: '#0F172A',
+                            accent: '#00F2FE',
+                            neon: '#4FACFE',
+                            glow: '#3B82F6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Pulse & Glow Animation for Cyber Logo Splash */
+        @keyframes cyberGlowPulse {
+            0% {
+                transform: scale(0.96);
+                filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.4)) drop-shadow(0 0 35px rgba(59, 130, 246, 0.3));
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.03);
+                filter: drop-shadow(0 0 30px rgba(0, 242, 254, 0.9)) drop-shadow(0 0 65px rgba(0, 242, 254, 0.6));
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.96);
+                filter: drop-shadow(0 0 15px rgba(0, 242, 254, 0.4)) drop-shadow(0 0 35px rgba(59, 130, 246, 0.3));
+                opacity: 0.8;
+            }
+        }
+
+        .animate-cyber-pulse {
+            animation: cyberGlowPulse 1.5s infinite ease-in-out;
+        }
+
+        /* Scanline Animation Effect */
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(1000%); }
+        }
+
+        .scanline-effect {
+            animation: scanline 8s linear infinite;
+        }
+
+        /* Glassmorphism Styling */
+        .glass-panel {
+            background: rgba(11, 21, 40, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(251, 191, 36, 0.6); /* Gold/Amber hover for defense theme */
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.25);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 12px rgba(0, 242, 254, 0.7);
+        }
+        
+        .text-glow-gold {
+            text-shadow: 0 0 12px rgba(251, 191, 36, 0.7);
+        }
+
+        /* Cyber Grid Background */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(0, 242, 254, 0.12) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-cyber-dark text-slate-200 font-sans min-h-screen relative overflow-x-hidden selection:bg-cyan-500 selection:text-black">
+
+    <!-- Grid Overlay Effect -->
+    <div class="fixed inset-0 bg-grid-pattern pointer-events-none z-0"></div>
+
+    <!-- 5-SECOND SPLASH SCREEN WITH CUSTOM DYNAMIC VECTOR LOGO -->
+    <div id="splash-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-950 transition-opacity duration-1000">
+        <!-- Background Glow -->
+        <div class="absolute w-[400px] h-[400px] bg-cyan-500/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="relative z-10 flex flex-col items-center text-center p-4 max-w-lg w-full">
+            
+            <!-- Dynamic Logo Box -->
+            <div id="logo-container" class="w-72 sm:w-80 h-80 rounded-2xl overflow-hidden border-2 border-cyan-500/50 animate-cyber-pulse shadow-2xl mb-8 bg-slate-900/90 relative flex flex-col items-center justify-center p-4">
+                
+                <!-- Scanline effect overlay -->
+                <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent w-full h-12 scanline-effect pointer-events-none"></div>
+
+                <!-- Default Vector Dynamic Logo -->
+                <div id="default-vector-logo" class="w-full h-full flex flex-col items-center justify-center text-center relative py-2 gap-4">
+                    <!-- Hooded Hacker Vector Art -->
+                    <svg viewBox="0 0 200 160" class="w-40 h-40 drop-shadow-[0_0_15px_rgba(0,242,254,0.8)] mt-2">
+                        <!-- Hood Contour -->
+                        <path d="M100 15 C50 15 35 60 35 110 C35 125 45 135 55 140 C75 140 100 135 100 135 C100 135 125 140 145 140 C155 135 165 125 165 110 C165 60 150 15 100 15 Z" fill="#0B1528" stroke="#00F2FE" stroke-width="3"/>
+                        <!-- Inner Face Shadow -->
+                        <path d="M100 30 C65 30 52 65 52 105 C68 112 100 112 100 112 C100 112 132 112 148 105 C148 65 135 30 100 30 Z" fill="#030712"/>
+                        <!-- Glowing Cyber Eyes -->
+                        <polygon points="70,68 88,72 73,80" fill="#00F2FE" class="animate-pulse"/>
+                        <polygon points="130,68 112,72 127,80" fill="#00F2FE" class="animate-pulse"/>
+                        <!-- Laptop with Big 'A' Logo -->
+                        <rect x="40" y="105" width="120" height="40" rx="4" fill="#0F172A" stroke="#3B82F6" stroke-width="2"/>
+                        <!-- Glowing 'A' Emblem -->
+                        <text x="100" y="133" font-family="Orbitron" font-size="26" font-weight="900" fill="#00F2FE" text-anchor="middle" filter="drop-shadow(0px 0px 5px #00F2FE)">A</text>
+                    </svg>
+
+                    <!-- Text Area inside Logo -->
+                    <div class="font-tech text-3xl font-black text-white tracking-widest text-glow mt-2">
+                        Abadi
+                    </div>
+                    <div class="font-tech text-xs font-bold text-cyan-400 tracking-[0.2em] mt-1">
+                        SİBER GÜVENLİK
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="w-64 sm:w-80 bg-slate-800/80 rounded-full h-2 overflow-hidden border border-cyan-500/30">
+                <div id="splash-bar" class="bg-gradient-to-r from-blue-500 via-cyan-400 to-amber-300 h-full w-0 transition-all duration-[5000ms] ease-linear"></div>
+            </div>
+
+            <p class="mt-4 font-tech text-cyan-400 text-xs tracking-widest uppercase animate-pulse">Sistem Yükleniyor... <span id="countdown">5</span>s</p>
+        </div>
+    </div>
+
+    <!-- MAIN WEBSITE CONTENT -->
+    <div id="main-content" class="relative z-10 min-h-screen opacity-0 transition-opacity duration-1000 flex flex-col justify-between">
+        
+        <!-- Header / Navbar -->
+        <header class="sticky top-0 z-40 glass-panel border-b border-cyan-500/20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+                <!-- Brand Name -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg border border-cyan-400/50 shadow-lg shadow-cyan-500/20 bg-slate-900 flex items-center justify-center text-cyan-400 font-tech font-bold text-lg">
+                        <i class="fa-solid fa-shield-cat"></i>
+                    </div>
+                    <span class="font-tech text-xl font-bold bg-gradient-to-r from-cyan-400 to-amber-400 bg-clip-text text-transparent tracking-wider">
+                        ozbeksiber
+                    </span>
+                </div>
+
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-slate-300">
+                    <a href="#hakkimda" class="hover:text-cyan-400 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-user text-cyan-400 text-xs"></i> Hakkımda
+                    </a>
+                    <a href="#ilgi-alanlari" class="hover:text-cyan-400 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-cyan-400 text-xs"></i> Uzmanlık
+                    </a>
+                    <a href="#projeler" class="hover:text-cyan-400 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-code text-cyan-400 text-xs"></i> Aktif Çalışmalar
+                    </a>
+                    <a href="#gorevler" class="hover:text-cyan-400 transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-users text-cyan-400 text-xs"></i> Görevlerim
+                    </a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 flex-grow">
+            
+            <!-- Hero Banner Section -->
+            <section class="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute -right-16 -top-16 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-16 -bottom-16 w-60 h-60 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+                    <div class="w-28 h-28 md:w-32 md:h-32 rounded-2xl border-2 border-cyan-400/60 shadow-xl shadow-cyan-500/20 flex-shrink-0 bg-slate-900/80 flex items-center justify-center text-cyan-400 text-4xl">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                    
+                    <div class="space-y-3 text-center md:text-left">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-tech">
+                            <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+                            Yazılım Mühendisliği Öğrencisi
+                        </div>
+                        <h1 class="text-4xl md:text-5xl font-bold font-tech text-white">
+                            Abdulellah Omeroglu
+                        </h1>
+                        <h2 class="text-xl md:text-2xl font-bold font-tech text-slate-300 mt-2">
+                            Geleceğin Teknolojileri & <span class="bg-gradient-to-r from-cyan-400 to-amber-400 bg-clip-text text-transparent">Siber Güvenlik</span>
+                        </h2>
+                        <p class="text-slate-400 text-sm md:text-base max-w-2xl mt-4">
+                            Savunma sanayii sistemleri, döner kanat İHA teknolojileri ve siber güvenlik alanlarında sürekli gelişime odaklanan kişisel portfolyo.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HAKKIMDA (About Me) SECTION -->
+            <section id="hakkimda" class="scroll-mt-28 space-y-6">
+                <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                    <i class="fa-solid fa-user-gear text-2xl text-cyan-400"></i>
+                    <h2 class="text-2xl font-bold font-tech text-white">Hakkımda</h2>
+                </div>
+
+                <div class="glass-panel rounded-2xl p-6 md:p-8 space-y-4 text-slate-300 leading-relaxed text-justify">
+                    <p>
+                        Merhaba! Ben bir Yazılım Mühendisliği öğrencisiyim. Yazılım benim için sadece bir ders ya da meslek değil, sürekli öğrenmeye açık, hep yeni şeyler keşfedebildiğim bir alan. Teknoloji hızla değiştiği için “bildiğim yeter” demek yerine her gün biraz daha ileri gitmeyi hedefliyorum.
+                    </p>
+                    <p>
+                        Derslerin yanında kendi projelerimi geliştirerek, yeni araçları ve teknolojileri deneyerek pratik yapıyorum. Bir sorunla karşılaştığımda pes etmek yerine araştırır, farklı çözümler dener ve sonunda ne öğrendiğimi not alırım. Ekip çalışmasını da önemsiyorum: başkalarının bakış açısından öğrenmek ve ortak bir şey ortaya koymak bana çok şey katıyor.
+                    </p>
+                    <p>
+                        Şu an hem teknik becerilerimi hem de problem çözme yeteneğimi geliştirmeye odaklanıyorum. Yeni fırsatlara, projelere ve iş birliklerine her zaman açığım. <span class="text-amber-400 font-medium">Ayrıca savunma sanayii ve siber güvenlik alanlarına özel bir ilgim bulunmaktadır.</span>
+                    </p>
+                </div>
+            </section>
+
+            <!-- İLGİ ALANLARI (Areas of Expertise) SECTION -->
+            <section id="ilgi-alanlari" class="scroll-mt-28 space-y-6">
+                <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                    <i class="fa-solid fa-shield-halved text-2xl text-cyan-400"></i>
+                    <h2 class="text-2xl font-bold font-tech text-white">Uzmanlık & İlgi Alanları</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Savunma Sanayii -->
+                    <div class="glass-card rounded-2xl p-6 flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl flex-shrink-0 shadow-[0_0_15px_rgba(251,191,36,0.2)]">
+                            <i class="fa-solid fa-helicopter"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold font-tech text-white">Savunma Sanayii & İHA</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Savunma sanayii odaklı teknolojiler, otonom insansız sistemler ve özellikle döner kanat İHA mimarileri üzerine tasarım ve geliştirme süreçleri.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Siber Güvenlik -->
+                    <div class="glass-card rounded-2xl p-6 flex items-start gap-5">
+                        <div class="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-2xl flex-shrink-0 shadow-[0_0_15px_rgba(0,242,254,0.2)]">
+                            <i class="fa-solid fa-bug-slash"></i>
+                        </div>
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold font-tech text-white">Siber Güvenlik</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">
+                                Sistem zafiyet analizleri, sızma testleri, güvenli kod pratikleri ve sistemleri dış tehditlere karşı koruma odaklı araştırmalar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJELER BÖLÜMÜ (Projects) SECTION -->
+            <section id="projeler" class="scroll-mt-28 space-y-6">
+                <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                    <i class="fa-solid fa-rocket text-2xl text-cyan-400"></i>
+                    <h2 class="text-2xl font-bold font-tech text-white">Projeler ve Aktif Çalışmalar</h2>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 border-l-4 border-l-amber-400 relative overflow-hidden">
+                    <div class="flex flex-col md:flex-row items-center gap-6">
+                        <div class="w-16 h-16 rounded-2xl bg-slate-800/80 border border-amber-400/40 flex items-center justify-center text-amber-400 text-3xl flex-shrink-0">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <div class="space-y-4 text-center md:text-left flex-1">
+                            <p class="text-lg md:text-xl font-medium text-white leading-relaxed">
+                                TEKNOFEST'e yönelik döner kanat İHA ve siber alanında çalışmalar yapılmaktadır.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GÖREVLER & KULÜPLER SECTION -->
+            <section id="gorevler" class="scroll-mt-28 space-y-6">
+                <div class="flex items-center gap-3 border-b border-slate-800 pb-3">
+                    <i class="fa-solid fa-users-viewfinder text-2xl text-cyan-400"></i>
+                    <h2 class="text-2xl font-bold font-tech text-white">Görevlerim & Kulüpler</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Kızılelma Card -->
+                    <div class="glass-card rounded-2xl p-6 flex flex-col items-center sm:items-start gap-4 hover:border-amber-400 transition-all duration-300 group">
+                        <div class="text-center sm:text-left space-y-3 w-full">
+                            <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-3">
+                                 <i class="fa-solid fa-plane-up text-amber-400 text-2xl group-hover:scale-110 transition-transform"></i>
+                                 <h3 class="text-lg font-bold font-tech text-white group-hover:text-amber-300 transition-colors">KTÜ Kızılelma Teknoloji Kulübü</h3>
+                            </div>
+                            <div class="inline-block px-3 py-1.5 rounded-md bg-amber-500/10 border border-amber-500/30 text-amber-400 text-sm font-semibold tracking-wide shadow-sm">
+                                <i class="fa-solid fa-crown mr-1"></i> Takım Kaptanı
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KTUSEC Card -->
+                    <div class="glass-card rounded-2xl p-6 flex flex-col items-center sm:items-start gap-4 hover:border-cyan-400 transition-all duration-300 group">
+                        <div class="text-center sm:text-left space-y-3 w-full">
+                             <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-3">
+                                 <i class="fa-solid fa-shield-virus text-cyan-400 text-2xl group-hover:scale-110 transition-transform"></i>
+                                 <h3 class="text-lg font-bold font-tech text-white group-hover:text-cyan-300 transition-colors">KTÜ Siber Güvenlik Kulübü</h3>
+                             </div>
+                            <div class="inline-block px-3 py-1.5 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-sm font-semibold tracking-wide shadow-sm">
+                                <i class="fa-solid fa-user-tie mr-1"></i> Yönetim Kurulu Üyesi
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER SECTION -->
+        <footer class="bg-cyber-dark py-10 mt-16 border-t border-cyan-500/20">
+            <div class="max-w-6xl mx-auto flex justify-center items-center">
+                <span class="font-tech text-3xl font-black bg-gradient-to-r from-amber-400 to-cyan-400 bg-clip-text text-transparent text-glow-gold tracking-[0.2em] uppercase">
+                    ozbeksiber
+                </span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- LOGIC SCRIPT -->
+    <script>
+        let timerInterval;
+
+        function runSplashTimer(seconds) {
+            const countdownEl = document.getElementById('countdown');
+            const splashBar = document.getElementById('splash-bar');
+            
+            let timeLeft = seconds;
+            countdownEl.innerText = timeLeft;
+            
+            splashBar.style.width = '0%';
+            setTimeout(() => {
+                splashBar.style.width = '100%';
+            }, 50);
+
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                if (timeLeft >= 0) {
+                    countdownEl.innerText = timeLeft;
+                }
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                }
+            }, 1000);
+        }
+
+        function triggerSplash() {
+            const splashScreen = document.getElementById('splash-screen');
+            const mainContent = document.getElementById('main-content');
+            const splashBar = document.getElementById('splash-bar');
+
+            splashBar.style.transition = 'none';
+            splashBar.style.width = '0%';
+            
+            splashScreen.classList.remove('hidden', 'opacity-0', 'pointer-events-none');
+            splashScreen.classList.add('opacity-100');
+            mainContent.classList.remove('opacity-100');
+            mainContent.classList.add('opacity-0');
+
+            setTimeout(() => {
+                splashBar.style.transition = 'all 5000ms linear';
+                runSplashTimer(5);
+            }, 100);
+
+            // 5 Saniye Sonra Açılış Ekranını Kapat
+            setTimeout(() => {
+                splashScreen.classList.remove('opacity-100');
+                splashScreen.classList.add('opacity-0');
+                
+                setTimeout(() => {
+                    splashScreen.classList.add('hidden', 'pointer-events-none');
+                    mainContent.classList.remove('opacity-0');
+                    mainContent.classList.add('opacity-100');
+                }, 1000);
+            }, 5000);
+        }
+
+        // Sayfa Yüklendiğinde Başlat
+        window.addEventListener('DOMContentLoaded', () => {
+            triggerSplash();
+        });
+    </script>
+</body>
+</html>
